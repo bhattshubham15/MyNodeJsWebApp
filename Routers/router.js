@@ -6,4 +6,5 @@ router.post('/causes', controller.createCause);
 router.get('/causes', controller.getCause);
 router.delete('/deleteCause', controller.deleteCause);
 router.put('/updateCause', controller.updateCause);
+router.post('/upload', controller.upload)
 module.exports = router;

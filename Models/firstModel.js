@@ -15,4 +15,21 @@ const causeModel = causeSchema({
         required: true,
       }
 })
+
+const imageSchema = mongoose.Schema;
+const imageModel = imageSchema({
+    url: {
+        type: String,
+        required: true
+      },
+      filename: {
+        type: String,
+        required: true
+      },
+      imageType: {
+        type: String,
+        required: true
+      }
+})
 exports.causeModel =  mongoose.model('Cause', causeModel)
+exports.imageModel = mongoose.model('image', imageModel)

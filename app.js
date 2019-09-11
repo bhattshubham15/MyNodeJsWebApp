@@ -3,6 +3,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const mainRoutes = require('./Routers/router');
+var path = require('path')
+var busboy = require('connect-busboy')
+
+
 // set up dependencies
 const app = express();
 app.use(bodyParser.json());
@@ -18,6 +22,9 @@ mongoose.connect('mongodb://localhost:27017/projectsupport', { useNewUrlParser: 
 
 // set up route
 app.use('/api/', mainRoutes);
+// Image files path
+app.use(express.static(path.join(__dirname, 'images')))
+app.use(busboy());
 // set up port
 const port = 5035;
 // set up route
