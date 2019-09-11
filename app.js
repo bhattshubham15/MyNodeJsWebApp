@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
     message: 'Welcome to Project Support',
   });
 });
+
 app.listen(port, () => {
   console.log(`Our server is running on port ${port}`);
 });

@@ -36,11 +36,41 @@ exports.createCause = async function (req, res) {
 }
 
 exports.getCause = function (req, res) {
-    Cause.causeModel.find({})
+    const id = req.body.id;
+    Cause.causeModel.findById(id)
         .then((data) => {
             res.json(data);
         })
         .catch((error) => {
             res.json(error.message)
         })
+}
+
+exports.deleteCause = function (req, res) {
+    const id = req.body.id;
+    Cause.causeModel.findByIdAndRemove(id)
+        .then((data) => {
+            res.json("Data deleted of id = "+id);
+        })
+        .catch((error) => {
+            res.json(error.message);
+        })
+}
+
+exports.updateCause = function (req, res) {
+try {
+    const id = req.body.id;
+    const title = req.body;
+    console.log(id);
+    Cause.causeModel.updateOne({_id:id}, {$set:title})
+    .then((data) => {
+        res.json(data)
+    })
+    .catch((error) => {
+        res.json(error)
+    })
+} catch (error) {
+    console.log(error.message)
+    res.json(error.message)    
+}
 }
